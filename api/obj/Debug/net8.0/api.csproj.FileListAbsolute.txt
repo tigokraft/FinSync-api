@@ -575,6 +575,7 @@ C:\Users\2223234\Downloads\finsync-v2 (1)\api\obj\Debug\net8.0\api.AssemblyInfo.
 C:\Users\2223234\Downloads\finsync-v2 (1)\api\obj\Debug\net8.0\api.csproj.CoreCompileInputs.cache
 C:\Users\2223234\Downloads\finsync-v2 (1)\api\obj\Debug\net8.0\api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\2223234\Downloads\finsync-v2 (1)\api\obj\Debug\net8.0\api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\2223234\Downloads\finsync-v2 (1)\api\obj\Debug\net8.0\api.sourcelink.json
 C:\Users\2223234\Downloads\finsync-v2 (1)\api\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\2223234\Downloads\finsync-v2 (1)\api\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\2223234\Downloads\finsync-v2 (1)\api\obj\Debug\net8.0\staticwebassets\msbuild.api.Microsoft.AspNetCore.StaticWebAssets.props

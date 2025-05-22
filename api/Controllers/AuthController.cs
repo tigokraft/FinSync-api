@@ -39,7 +39,7 @@ public class AuthController : ControllerBase
     {
         if (_context.Users.Any(u => u.Username == request.Username))
             return Conflict("Username already exists.");
-    
+        
         var newUser = new User
         {
             Username = request.Username,
