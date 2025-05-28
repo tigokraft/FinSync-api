@@ -66,6 +66,49 @@ namespace FinSync.Controllers
             return Ok(expenses);
         }
 
+        [HttpGet("summary")]
+        [Authorize]
+        public IActionResult GetExpenseSummary()
+        {
+            var userIdClaim = User.FindFirst("userId")?.Value;
+            if (!int.TryParse(userIdClaim, out int userId))
+                return Unauthorized("Invalid user token.");
+        
+            var now = DateTime.Now;
+            var startOfMonth = new DateTime(now.Year, now.Month, 1);
+        
+            var monthlyTotal = _context.Expenses
+                .Where(e => e.UserId == userId && e.Date >= startOfMonth)
+                .Sum(e => (decimal?)e.Amount) ?? 0;
+        
+            var allTimeTotal = _context.Expenses
+                .Where(e => e.UserId == userId)
+                .Sum(e => (decimal?)e.Amount) ?? 0;
+        
+            var expenses = _context.Expenses
+                .Where(e => e.UserId == userId)
+                .Select(e => new ExpenseItemDto
+                {
+                    ExpenseId = e.ExpenseId,
+                    Amount = e.Amount,
+                    Description = e.Description,
+                    Date = e.Date,
+                    Tags = e.Tags,
+                    CategoryName = e.Category != null ? e.Category.CategoryName : null
+                })
+                .ToList();
+        
+            var result = new MonthlyExpenseSummaryDto
+            {
+                TotalMonthlySpent = monthlyTotal,
+                TotalAllTimeSpent = allTimeTotal,
+                Expenses = expenses
+            };
+        
+            return Ok(result);
+        }
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteExpense(int id)
         {
